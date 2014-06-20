@@ -20,7 +20,7 @@
 
 const SAMPLES_PER_BUFFER = 8192;
  
-var stage, mycanvas, font, scrollerBackground, logo, raster,
+var stage, mycanvas, font, scrollerBackground, logo, raster, fltfont,
 width = 320, height = 200,
 scroller, sinParams, starfield, starParams,
 logoSin = 0, logoY = ((height - 165) / 2), rasterDirection = true, rasterSin = 0, rasterY,
@@ -48,6 +48,9 @@ function init(){
 	
 	font = new image('assets/img/font_select.png');
 	font.initTile(16, 16, 32);
+
+	fltfont = new image('assets/img/c64font_fairlight.gif');
+	fltfont.initTile(8, 9, 33);
 
 	scrollerBackground = new image('assets/img/colorscroll.gif');
 
@@ -78,9 +81,9 @@ function init(){
 	atariDecrunch = new AmigaDecrunch(3, 4, 100, 840);
 	playSong('assets/X-Ray.sid');
 	
-	decrunch();
+	// decrunch();
 
-	// go();
+	go();
 }
  
 function decrunch() {
@@ -111,7 +114,8 @@ function go() {
 
 function render() {
 	drawLogo();
-
+	fltfont.print(mycanvas, '20. JUN 2014. - PODRUM', 80, 190);
+	
 	scroller.draw(120 - 16);
 	// font.print(canvas, 'YEOMAN!', 100, 100);
 
